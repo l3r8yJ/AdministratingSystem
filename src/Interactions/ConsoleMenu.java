@@ -110,7 +110,6 @@ public class ConsoleMenu {
         System.out.println("Phone number: ");
         Scanner read = new Scanner(System.in);
         var phoneNumber = read.next();
-
         employeesList.DeleteEmployee(phoneNumber);
     }
 }
