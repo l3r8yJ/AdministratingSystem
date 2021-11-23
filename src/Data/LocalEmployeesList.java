@@ -11,10 +11,10 @@ import java.util.*;
 
 public class LocalEmployeesList {
 
-    private ArrayList<Employee> employeeList = new ArrayList<>();
+    private final ArrayList<Employee> employeeList = new ArrayList<>();
 
     public void AddEmployee(@NotNull Employee employee) {
-        if (!employee.getName().isEmpty() && !employee.getPhoneNumber().isEmpty()) employeeList.add(employee);
+        if (!employee.getName().isEmpty() && !employee.getPhoneNumber().isEmpty() && !employee.getPassword().isEmpty()) employeeList.add(employee);
         else System.out.println("Empty employee");
     }
 
@@ -33,10 +33,10 @@ public class LocalEmployeesList {
     public void ExportToFile(String fileName) {
        try(FileWriter writer = new FileWriter(fileName, false)) {
            for (var employee : employeeList) {
-               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + '\n');
+               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() +'\n');
                writer.flush();
            }
-           System.out.println("Successfully saved!");
+           System.out.println("Database successfully saved!");
        } catch (IOException ex) {
            System.out.println("Saving error!");
            System.out.println(ex.getMessage());
@@ -50,10 +50,10 @@ public class LocalEmployeesList {
 
             while (line != null) {
                 String[] fields = line.split(",");
-                employeeList.add(new Employee(fields[0], fields[1]));
+                employeeList.add(new Employee(fields[0], fields[1], fields[2]));
                 line = bufferedReader.readLine();
             }
-            System.out.println("Successfully imported!");
+            System.out.println("Database successfully imported!");
         }
         catch(IOException ex){
             System.out.println("Import Error!");

@@ -7,13 +7,46 @@ public class ConsoleMenu {
 
     LocalEmployeesList employeesList = new LocalEmployeesList();
     String fileName = "data.csv";
-    boolean isRun = true;
     Scanner scanner = new Scanner(System.in);
     int selector;
 
-    public void Run() {
+    public void MainMenu(){
+        while (true)
+        {
+            System.out.println();
+            System.out.println("Who you are?");
+            System.out.println("1. Administrator.");
+            System.out.println("2. Employee.");
+            System.out.println("3. Exit");
+
+            var reader = scanner.next();
+
+            try {
+                selector = Integer.parseInt(reader);
+            } catch (NumberFormatException e) {
+                System.out.println("Incorrect input" + e);
+            }
+
+            switch (selector) {
+                case 1:
+                    AdministrationRun();
+                    break;
+                case 2:
+                    EmployeeRun();
+                    break;
+                case 3:
+                    return;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + selector);
+            }
+        }
+    }
+
+    private void EmployeeRun() {};
+
+    private void AdministrationRun() {
         employeesList.ImportFromFile(fileName);
-        while (isRun)
+        while (true)
         {
             System.out.println();
             System.out.println("Menu");
@@ -48,9 +81,11 @@ public class ConsoleMenu {
             }
         }
     }
+
     private Employee fillForEmployee() {
         String name;
         String phoneNumber;
+        String password;
         Scanner read = new Scanner(System.in);
 
         System.out.println("Name: ");
@@ -59,16 +94,18 @@ public class ConsoleMenu {
         System.out.println("Phone number: ");
         phoneNumber = read.next();
 
-        return new Employee(name, phoneNumber);
+        System.out.println("Password: ");
+        password = read.next();
+
+        return new Employee(name, phoneNumber, password);
     }
 
     private void MenuAdd() {
         var tmp = fillForEmployee();
-        employeesList.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber()));
+        employeesList.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
     }
 
-    private void MenuRemove()
-    {
+    private void MenuRemove() {
         var tmp = fillForEmployee();
         employeesList.DeleteEmployee(tmp.getName(), tmp.getPhoneNumber());
     }
