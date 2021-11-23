@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class LocalEmployeesList extends ArrayList<Employee> {
+public class LocalEmployeesList extends ArrayList<Employee> implements Iterable<Employee> {
 
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
