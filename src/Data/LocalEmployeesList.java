@@ -1,7 +1,6 @@
 package Data;
 
 import Employees.Employee;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +12,7 @@ public class LocalEmployeesList {
 
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
-    public void AddEmployee(@NotNull Employee employee) {
+    public void AddEmployee(Employee employee) {
         if (!employee.getName().isEmpty() && !employee.getPhoneNumber().isEmpty() && !employee.getPassword().isEmpty()) employeeList.add(employee);
         else System.out.println("Empty employee");
     }
