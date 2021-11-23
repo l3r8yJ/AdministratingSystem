@@ -20,6 +20,9 @@ public class ConsoleMenu {
             System.out.println("2. Employee.");
             System.out.println("3. Exit");
 
+            employeesList.Clear();
+            employeesList.ImportFromFile(employeesDataBaseFile);
+
             var reader = scanner.next();
 
             try {
@@ -53,8 +56,6 @@ public class ConsoleMenu {
     private void EmployeeRun() {}
 
     private void AdministrationRun() {
-        employeesList.Clear();
-        employeesList.ImportFromFile(employeesDataBaseFile);
         while (true)
         {
             System.out.println();
