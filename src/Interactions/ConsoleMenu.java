@@ -107,7 +107,10 @@ public class ConsoleMenu {
     }
 
     private void MenuRemove() {
-        var tmp = fillForEmployee();
-        employeesList.DeleteEmployee(tmp.getName(), tmp.getPhoneNumber());
+        System.out.println("Phone number: ");
+        Scanner read = new Scanner(System.in);
+        var phoneNumber = read.next();
+
+        employeesList.DeleteEmployee(phoneNumber);
     }
 }

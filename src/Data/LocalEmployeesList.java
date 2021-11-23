@@ -13,12 +13,18 @@ public class LocalEmployeesList {
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
     public void AddEmployee(Employee employee) {
+        for (var e : employeeList) {
+            if (e.getPhoneNumber().equals(employee.getPhoneNumber())) {
+                System.out.println("Number already exist!");
+                return;
+            }
+        }
         if (!employee.getName().isEmpty() && !employee.getPhoneNumber().isEmpty() && !employee.getPassword().isEmpty()) employeeList.add(employee);
         else System.out.println("Empty employee");
     }
 
-    public void DeleteEmployee(String name, String number) {
-        employeeList.removeIf(e -> e.getPhoneNumber().equals(number) && e.getName().equals(name));
+    public void DeleteEmployee(String number) {
+        employeeList.removeIf(e -> e.getPhoneNumber().equals(number));
     }
 
     public void ConsolePrint() {
