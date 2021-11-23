@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class LocalEmployeesList extends ArrayList<Employee> implements Iterable<Employee> {
+public class LocalEmployeesList {
 
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
@@ -64,6 +64,10 @@ public class LocalEmployeesList extends ArrayList<Employee> implements Iterable<
             System.out.println("Import Error!");
             System.out.println(ex.getMessage());
         }
+    }
+
+    public ArrayList<Employee> getEmployeeList() {
+        return employeeList;
     }
 
     public void Clear() {
