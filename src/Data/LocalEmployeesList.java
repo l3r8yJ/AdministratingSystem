@@ -59,4 +59,8 @@ public class LocalEmployeesList {
             System.out.println(ex.getMessage());
         }
     }
+
+    public void Clear() {
+        employeeList.clear();
+    }
 }

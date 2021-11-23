@@ -45,6 +45,7 @@ public class ConsoleMenu {
     private void EmployeeRun() {};
 
     private void AdministrationRun() {
+        employeesList.Clear();
         employeesList.ImportFromFile(employeesDataBaseFile);
         while (true)
         {
