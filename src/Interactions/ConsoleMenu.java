@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ConsoleMenu {
 
     LocalEmployeesList employeesList = new LocalEmployeesList();
-    String fileName = "data.csv";
+    String employeesDataBaseFile = "employees.csv";
     Scanner scanner = new Scanner(System.in);
     int selector;
 
@@ -45,7 +45,7 @@ public class ConsoleMenu {
     private void EmployeeRun() {};
 
     private void AdministrationRun() {
-        employeesList.ImportFromFile(fileName);
+        employeesList.ImportFromFile(employeesDataBaseFile);
         while (true)
         {
             System.out.println();
@@ -74,7 +74,7 @@ public class ConsoleMenu {
                     MenuRemove();
                     break;
                 case 4:
-                    employeesList.ExportToFile(fileName);
+                    employeesList.ExportToFile(employeesDataBaseFile);
                     return;
                 default:
                     throw new IllegalStateException("Unexpected value: " + selector);
