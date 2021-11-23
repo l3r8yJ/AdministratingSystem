@@ -2,13 +2,14 @@ package Data;
 
 import Employees.*;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class LocalEmployeesList {
+public class LocalEmployeesList extends List {
 
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
