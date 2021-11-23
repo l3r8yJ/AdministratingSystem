@@ -14,14 +14,14 @@ public class ConsoleMenu {
     public void MainMenu(){
         while (true)
         {
+            employeesList.Clear();
+            employeesList.ImportFromFile(employeesDataBaseFile);
+
             System.out.println();
             System.out.println("Who you are?");
             System.out.println("1. Administrator.");
             System.out.println("2. Employee.");
             System.out.println("3. Exit");
-
-            employeesList.Clear();
-            employeesList.ImportFromFile(employeesDataBaseFile);
 
             var reader = scanner.next();
 
