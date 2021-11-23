@@ -1,6 +1,6 @@
 package Data;
 
-import Employees.Employee;
+import Employees.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

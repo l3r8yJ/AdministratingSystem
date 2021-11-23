@@ -5,12 +5,22 @@ import java.sql.Date;
 public class Employee {
 
     private String name;
+    private String sex;
+    private byte age; //Надо ли это?
     private String phoneNumber;
     private String password;
     private Date getIn;
     private Date getOut;
     private double rate;
     private double salary;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public double getRate() {
         return rate;

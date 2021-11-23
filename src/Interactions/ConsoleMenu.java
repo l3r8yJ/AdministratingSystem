@@ -1,5 +1,5 @@
 package Interactions;
-import Employees.Employee;
+import Employees.*;
 import Data.*;
 import java.util.Scanner;
 
@@ -42,7 +42,7 @@ public class ConsoleMenu {
         }
     }
 
-    private void EmployeeRun() {};
+    private void EmployeeRun() {}
 
     private void AdministrationRun() {
         employeesList.Clear();
