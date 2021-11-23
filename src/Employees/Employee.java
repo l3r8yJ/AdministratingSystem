@@ -1,10 +1,32 @@
 package Employees;
 
+import java.sql.Date;
+
 public class Employee {
 
     private String name;
     private String phoneNumber;
     private String password;
+    private Date getIn;
+    private Date getOut;
+    private double rate;
+    private double salary;
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
     public Employee(String name, String phoneNumber, String password) {
         setName(name);
@@ -41,5 +63,21 @@ public class Employee {
 
     public boolean containsNumber(String string) {
         return string.matches(".*\\d+.*");
+    }
+
+    public Date getGetIn() {
+        return getIn;
+    }
+
+    public void setGetIn(Date getIn) {
+        this.getIn = getIn;
+    }
+
+    public Date getGetOut() {
+        return getOut;
+    }
+
+    public void setGetOut(Date getOut) {
+        this.getOut = getOut;
     }
 }
