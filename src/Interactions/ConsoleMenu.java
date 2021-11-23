@@ -9,6 +9,7 @@ public class ConsoleMenu {
     String employeesDataBaseFile = "employees.csv";
     Scanner scanner = new Scanner(System.in);
     int selector;
+    String adminPassword = "root";
 
     public void MainMenu(){
         while (true)
@@ -29,7 +30,7 @@ public class ConsoleMenu {
 
             switch (selector) {
                 case 1:
-                    AdministrationRun();
+                    AdminLogin();
                     break;
                 case 2:
                     EmployeeRun();
@@ -40,6 +41,13 @@ public class ConsoleMenu {
                     throw new IllegalStateException("Unexpected value: " + selector);
             }
         }
+    }
+
+    private void AdminLogin() {
+        System.out.println("Enter password: ");
+        var admPass = scanner.next();
+        if (admPass.equals(adminPassword)) AdministrationRun();
+        else System.out.println("Wrong password!");
     }
 
     private void EmployeeRun() {}
