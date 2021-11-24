@@ -155,12 +155,12 @@ public class ConsoleMenu {
         System.out.println("Password: ");
         password = read.next();
 
-        return new Employee(name, phoneNumber, password);
+        return new Employee(name, phoneNumber, password, 0);
     }
 
     private void MenuAdd() {
         var tmp = fillForEmployee();
-        localEmployeesDB.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
+        localEmployeesDB.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
     }
 
     private void MenuRemove() {
