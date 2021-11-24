@@ -33,7 +33,7 @@ public class LocalEmployeesList {
             System.out.println("Empty list...");
             return;
         }
-        for (var e : employeeList) System.out.println(e.getName() + " " + e.getPhoneNumber());
+        for (var e : employeeList) System.out.println(e.getName() + " " + e.getPhoneNumber() + " " + e.getWorkedTime());
     }
     public void ExportToFile(String fileName) {
        try(FileWriter writer = new FileWriter(fileName, false)) {
