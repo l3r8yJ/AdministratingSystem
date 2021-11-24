@@ -66,13 +66,13 @@ public class LocalEmployeesList {
         }
     }
 
-    public void MakeReport(String fileName){
+    public void createReport(String fileName){
         try(FileWriter writer = new FileWriter(fileName, false)) {
             for (var employee : employeeList) {
                 if (employee.getWorkedTime() > 1)
-                    writer.write(employee.getName() + " worked for " + employee.getWorkedTime() + " hours and earned " + employee.getSalary() + " roubles" + '\n');
+                    writer.write(employee.getType() + ' ' + employee.getName() + " worked for " + employee.getWorkedTime() + " hours and earned " + employee.getSalary() + " roubles" + '\n');
                 else
-                    writer.write(employee.getName() + " worked " + employee.getWorkedTime() + " hour and earned " + employee.getSalary() + " roubles" + '\n');
+                    writer.write(employee.getType() + ' ' + employee.getName() + " worked " + employee.getWorkedTime() + " hour and earned " + employee.getSalary() + " roubles" + '\n');
                 writer.flush();
             }
             System.out.println("Report successfully created!");

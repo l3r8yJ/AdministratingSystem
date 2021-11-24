@@ -153,7 +153,7 @@ public class ConsoleMenu {
                     MenuRemove();
                     break;
                 case 4:
-                    localEmployeesDB.MakeReport(workReportFile);
+                    localEmployeesDB.createReport(workReportFile);
                     break;
                 case 5:
                     localEmployeesDB.ExportToFile(employeesDataBaseFile);
