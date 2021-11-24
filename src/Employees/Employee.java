@@ -13,10 +13,11 @@ public class Employee {
     public Employee() {
     }
     
-    public Employee(String name, String phoneNumber, String password) {
+    public Employee(String name, String phoneNumber, String password, int workedTime) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
+        setWorkedTime(workedTime);
     }
 
     public String getPassword() {
@@ -68,6 +69,10 @@ public class Employee {
 
     public int getWorkedTime() {
         return workedTime;
+    }
+
+    public void setWorkedTime(int workedTime) {
+        this.workedTime = workedTime;
     }
 
     public void addWorkedTime() {
