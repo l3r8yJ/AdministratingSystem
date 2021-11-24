@@ -17,7 +17,8 @@ public class Freelancer extends Employee {
         setPassword(password);
     }
 
-    double getSalary() {
+    @Override
+    public double getSalary() {
         salary = rate * workedTime;
         return salary;
     }

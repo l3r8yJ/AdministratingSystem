@@ -9,6 +9,7 @@ public class ConsoleMenu {
 
     LocalEmployeesList localEmployeesDB = new LocalEmployeesList();
     String employeesDataBaseFile = "employees.csv";
+    String workReportFile = "workReport.txt";
     Scanner scanner = new Scanner(System.in);
     int selector;
     String adminPassword = "root";
@@ -130,7 +131,8 @@ public class ConsoleMenu {
             System.out.println("1. Show list of employees.");
             System.out.println("2. Add employee to list.");
             System.out.println("3. Remove employee from list.");
-            System.out.println("4. Exit.");
+            System.out.println("4. Create work report.");
+            System.out.println("5. Exit.");
 
             var reader = scanner.next();
 
@@ -151,6 +153,9 @@ public class ConsoleMenu {
                     MenuRemove();
                     break;
                 case 4:
+                    localEmployeesDB.MakeReport(workReportFile);
+                    break;
+                case 5:
                     localEmployeesDB.ExportToFile(employeesDataBaseFile);
                     return;
                 default:
@@ -190,7 +195,7 @@ public class ConsoleMenu {
         var tmp = fillForEmployee();
         switch (selector) {
             case 1:
-                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), 0));
+                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
                 break;
             case 2:
                 localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));

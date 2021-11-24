@@ -10,7 +10,11 @@ public class EmployeeOnSalary extends Employee {
         return Type;
     }
 
-    void setSalary() {
+    @Override
+    public double getSalary(){
+        return salary;
+    }
+    public void setSalary() {
         if (workedTime > 160) {
             salary *= 2;
         }

@@ -83,4 +83,8 @@ public class Employee {
     public void addWorkedTime() {
         workedTime += timeOfShutdown - timeOfBeginning;
     }
+
+    public double getSalary(){
+        return 0;
+    }
 }
