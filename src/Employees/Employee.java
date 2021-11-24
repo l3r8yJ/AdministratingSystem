@@ -5,10 +5,10 @@ public class Employee {
     private String name;
     private String phoneNumber;
     private String password;
-    protected long timeOfBeginning;
-    protected long timeOfShutdown;
+    private int timeOfBeginning;
+    private int timeOfShutdown;
 
-    long workedTime = 0;
+    int workedTime = 0;
 
     public Employee() {
     }
@@ -54,7 +54,7 @@ public class Employee {
         return timeOfBeginning;
     }
 
-    public void setTimeOfBeginning(long timeOfBeginning) {
+    public void setTimeOfBeginning(int timeOfBeginning) {
         this.timeOfBeginning = timeOfBeginning;
     }
 
@@ -62,11 +62,11 @@ public class Employee {
         return timeOfShutdown;
     }
 
-    public void setTimeOfShutdown(long getOut) {
-        this.timeOfShutdown = getOut;
+    public void setTimeOfShutdown(int timeOfShutdown) {
+        this.timeOfShutdown = timeOfShutdown;
     }
 
-    public long getWorkedTime() {
+    public int getWorkedTime() {
         return workedTime;
     }
 

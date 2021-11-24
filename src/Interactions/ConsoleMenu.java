@@ -77,21 +77,28 @@ public class ConsoleMenu {
 
         switch (selector) {
             case 1:
-                //TODO: get time of start
                 Date inDate = new Date();
-                temp.setTimeOfBeginning(inDate.getTime());
+                temp.setTimeOfBeginning(inDate.getHours());
+                System.out.println("Start of work at " + inDate.getHours() + " added.");
+                Sleep();
                 break;
             case 2:
-                //TODO: get time of end
                 Date outDate = new Date();
-                temp.setTimeOfShutdown(outDate.getTime());
-                break;
-            case 3:
-                //TODO: calc sum time and push to DB + exit
+                temp.setTimeOfShutdown(outDate.getHours());
+                System.out.println("End of work at " + outDate.getHours() + " added.");
+
+                //TODO: push to DB
                 temp.addWorkedTime();
+                System.out.println("You totally worked " + temp.getWorkedTime());
+                Sleep();
                 break;
-            default:
-                throw new IllegalStateException("Unexpected value" + selector);
+
+            case 3:
+                Sleep();
+                return;
+
+                default:
+                    throw new IllegalStateException("Unexpected value" + selector);
         }
     }
 
@@ -160,5 +167,13 @@ public class ConsoleMenu {
         Scanner read = new Scanner(System.in);
         var phoneNumber = read.next();
         localEmployeesDB.DeleteEmployee(phoneNumber);
+    }
+
+    private void Sleep() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
