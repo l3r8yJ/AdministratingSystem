@@ -52,7 +52,7 @@ public class LocalEmployeesList {
         {
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line = bufferedReader.readLine();
-
+            //checking the types
             while (line != null) {
                 String[] fields = line.split(",");
                 if (fields[4].equals("Employee on salary")) {
