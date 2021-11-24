@@ -1,13 +1,14 @@
 package Employees;
-import java.util.Date;
 
 public class Employee {
 
     private String name;
     private String phoneNumber;
     private String password;
-    protected Date timeOfBeginning;
-    protected Date timeOfShutdown;
+    protected long timeOfBeginning;
+    protected long timeOfShutdown;
+
+    long workedTime = 0;
 
     public Employee() {
     }
@@ -49,19 +50,27 @@ public class Employee {
         return string.matches(".*\\d+.*");
     }
 
-    public Date getTimeOfBeginning() {
+    public long getTimeOfBeginning() {
         return timeOfBeginning;
     }
 
-    public void setTimeOfBeginning(Date timeOfBeginning) {
+    public void setTimeOfBeginning(long timeOfBeginning) {
         this.timeOfBeginning = timeOfBeginning;
     }
 
-    public Date getTimeOfShutdown() {
+    public long getTimeOfShutdown() {
         return timeOfShutdown;
     }
 
-    public void setTimeOfShutdown(Date getOut) {
+    public void setTimeOfShutdown(long getOut) {
         this.timeOfShutdown = getOut;
+    }
+
+    public long getWorkedTime() {
+        return workedTime;
+    }
+
+    public void addWorkedTime() {
+        workedTime += timeOfShutdown - timeOfBeginning;
     }
 }

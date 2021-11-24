@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;
-    double sumTime = timeOfShutdown.getTime() - timeOfBeginning.getTime();
+    long workedTime = 0;
 
     void setSalary() {
-        if (sumTime > 160) {
+        if (workedTime > 160) {
             salary *= 2;
         }
     }

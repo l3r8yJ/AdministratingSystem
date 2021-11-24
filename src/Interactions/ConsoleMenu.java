@@ -1,11 +1,13 @@
 package Interactions;
 import Employees.*;
 import Data.*;
+
+import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleMenu {
 
-    LocalEmployeesList employeesList = new LocalEmployeesList();
+    LocalEmployeesList localEmployeesDB = new LocalEmployeesList();
     String employeesDataBaseFile = "employees.csv";
     Scanner scanner = new Scanner(System.in);
     int selector;
@@ -14,8 +16,8 @@ public class ConsoleMenu {
     public void MainMenu(){
         while (true)
         {
-            employeesList.Clear();
-            employeesList.ImportFromFile(employeesDataBaseFile);
+            localEmployeesDB.Clear();
+            localEmployeesDB.ImportFromFile(employeesDataBaseFile);
 
             System.out.println("Who you are?");
             System.out.println("1. Administrator.");
@@ -49,12 +51,17 @@ public class ConsoleMenu {
         System.out.println("Enter password: ");
         var admPass = scanner.next();
         if (admPass.equals(adminPassword)) AdministrationRun();
-        else System.out.println("Wrong password!");
+        else System.out.println("wrong password!");
+    }
+
+    private Employee EmployeeLogin() {
+        //TODO: Login realisation and return employee that logged
+        return new Employee();
     }
 
     private void EmployeeRun() {
-        //TODO: Login realisation + account that logged;
-        System.out.println("You logged as name");
+        var temp = EmployeeLogin();
+        System.out.println("You logged as " + temp.getName());
         System.out.println("1. The beginning of the work day.");
         System.out.println("2. End of the working day.");
         System.out.println("3. Exit.");
@@ -71,10 +78,18 @@ public class ConsoleMenu {
         switch (selector) {
             case 1:
                 //TODO: get time of start
+                Date inDate = new Date();
+                temp.setTimeOfBeginning(inDate.getTime());
+                break;
             case 2:
                 //TODO: get time of end
+                Date outDate = new Date();
+                temp.setTimeOfShutdown(outDate.getTime());
+                break;
             case 3:
                 //TODO: calc sum time and push to DB + exit
+                temp.addWorkedTime();
+                break;
             default:
                 throw new IllegalStateException("Unexpected value" + selector);
         }
@@ -100,7 +115,7 @@ public class ConsoleMenu {
 
             switch (selector) {
                 case 1:
-                    employeesList.ConsolePrint();
+                    localEmployeesDB.ConsolePrint();
                     break;
                 case 2:
                     MenuAdd();
@@ -109,7 +124,7 @@ public class ConsoleMenu {
                     MenuRemove();
                     break;
                 case 4:
-                    employeesList.ExportToFile(employeesDataBaseFile);
+                    localEmployeesDB.ExportToFile(employeesDataBaseFile);
                     return;
                 default:
                     throw new IllegalStateException("Unexpected value: " + selector);
@@ -137,13 +152,13 @@ public class ConsoleMenu {
 
     private void MenuAdd() {
         var tmp = fillForEmployee();
-        employeesList.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
+        localEmployeesDB.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
     }
 
     private void MenuRemove() {
         System.out.println("Phone number: ");
         Scanner read = new Scanner(System.in);
         var phoneNumber = read.next();
-        employeesList.DeleteEmployee(phoneNumber);
+        localEmployeesDB.DeleteEmployee(phoneNumber);
     }
 }
