@@ -90,6 +90,7 @@ public class ConsoleMenu {
                 //TODO: push to DB
                 temp.addWorkedTime();
                 System.out.println("You totally worked " + temp.getWorkedTime());
+                localEmployeesDB.ExportToFile(employeesDataBaseFile);
                 Sleep();
                 break;
 
