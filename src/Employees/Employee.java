@@ -8,6 +8,11 @@ public class Employee {
     private int timeOfBeginning;
     private int timeOfShutdown;
 
+    public String GetType()
+    {
+        return "Employee";
+    }
+
     int workedTime = 0;
 
     public Employee() {

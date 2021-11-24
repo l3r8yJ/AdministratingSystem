@@ -2,9 +2,14 @@ package Employees;
 
 public class Freelancer extends Employee {
 
-    static String Type = "Freelancer";
+    String Type = "Freelancer";
     double rate = 1000;
     double salary;
+
+    @Override
+    public String GetType() {
+        return Type;
+    }
 
     public Freelancer(String name, String phoneNumber, String password) {
         setName(name);

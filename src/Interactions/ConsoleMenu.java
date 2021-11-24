@@ -190,7 +190,7 @@ public class ConsoleMenu {
         var tmp = fillForEmployee();
         switch (selector) {
             case 1:
-                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
+                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), 0));
                 break;
             case 2:
                 localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
