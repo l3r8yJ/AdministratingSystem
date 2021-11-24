@@ -1,7 +1,5 @@
 package Employees;
 
-import java.util.Date;
-
 public class Freelancer extends Employee {
 
     static String Type = "Freelancer";
