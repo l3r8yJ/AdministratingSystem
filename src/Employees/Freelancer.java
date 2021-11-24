@@ -7,14 +7,15 @@ public class Freelancer extends Employee {
     double salary;
 
     @Override
-    public String GetType() {
+    public String getType() {
         return Type;
     }
 
-    public Freelancer(String name, String phoneNumber, String password) {
+    public Freelancer(String name, String phoneNumber, String password, int workedTime) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
+        setWorkedTime(workedTime);
     }
 
     @Override
