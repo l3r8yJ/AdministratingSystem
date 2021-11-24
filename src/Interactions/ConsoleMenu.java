@@ -37,7 +37,7 @@ public class ConsoleMenu {
                     AdminLogin();
                     break;
                 case 2:
-                    EmployeeRun();
+                    EmployeeLogin();
                     break;
                 case 3:
                     return;
@@ -54,7 +54,7 @@ public class ConsoleMenu {
         else System.out.println("wrong password!");
     }
 
-    private Employee EmployeeLogin() {
+    private void EmployeeLogin() {
         boolean phoneFound = false;
         System.out.println("Enter phone number: ");
         String phoneNumber = scanner.next();
@@ -66,7 +66,9 @@ public class ConsoleMenu {
                     String password = scanner.next();
                     if (password.equals(e.getPassword())){
                         System.out.println("You're welcome!");
-                        return new Employee(e.getName(), e.getPhoneNumber(), e.getPassword());
+                        //return new Employee(e.getName(), e.getPhoneNumber(), e.getPassword(), e.getWorkedTime());
+                        EmployeeRun(e);
+                        return;
                     }
                     else {
                         System.out.println("Wrong password!");
@@ -77,11 +79,11 @@ public class ConsoleMenu {
         }
         if (!phoneFound)
             System.out.println("Phone number not found...");
-        return new Employee();
+        //return new Employee();
     }
 
-    private void EmployeeRun() {
-        var temp = EmployeeLogin();
+    private void EmployeeRun(Employee temp) {
+        //var temp = EmployeeLogin();
         System.out.println("You logged as " + temp.getName());
         System.out.println("1. The beginning of the work day.");
         System.out.println("2. End of the working day.");
