@@ -17,7 +17,6 @@ public class ConsoleMenu {
             employeesList.Clear();
             employeesList.ImportFromFile(employeesDataBaseFile);
 
-            System.out.println();
             System.out.println("Who you are?");
             System.out.println("1. Administrator.");
             System.out.println("2. Employee.");
@@ -53,7 +52,33 @@ public class ConsoleMenu {
         else System.out.println("Wrong password!");
     }
 
-    private void EmployeeRun() {}
+    private void EmployeeRun() {
+        //TODO: Login realisation + account that logged;
+        System.out.println("You logged as name");
+        System.out.println("1. The beginning of the work day.");
+        System.out.println("2. End of the working day.");
+        System.out.println("3. Exit.");
+
+
+        var reader = scanner.next();
+
+        try {
+            selector = Integer.parseInt(reader);
+        } catch (NumberFormatException e) {
+            System.out.println("Incorrect input" + e);
+        }
+
+        switch (selector) {
+            case 1:
+                //TODO: get time of start
+            case 2:
+                //TODO: get time of end
+            case 3:
+                //TODO: calc sum time and push to DB + exit
+            default:
+                throw new IllegalStateException("Unexpected value" + selector);
+        }
+    }
 
     private void AdministrationRun() {
         while (true)
