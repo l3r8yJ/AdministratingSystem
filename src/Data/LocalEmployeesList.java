@@ -66,6 +66,13 @@ public class LocalEmployeesList {
         }
     }
 
+    public void UpdateEmployee(Employee updatedEmployee) {
+        for (var e : employeeList) {
+            if(updatedEmployee.equals(e)) e = updatedEmployee;
+            else System.out.println("Employee not found!");
+        }
+    }
+
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
     }

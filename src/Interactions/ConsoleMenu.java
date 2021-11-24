@@ -66,7 +66,6 @@ public class ConsoleMenu {
                     String password = scanner.next();
                     if (password.equals(e.getPassword())){
                         System.out.println("You're welcome!");
-                        //return new Employee(e.getName(), e.getPhoneNumber(), e.getPassword(), e.getWorkedTime());
                         EmployeeRun(e);
                         return;
                     }
@@ -79,49 +78,53 @@ public class ConsoleMenu {
         }
         if (!phoneFound)
             System.out.println("Phone number not found...");
-        //return new Employee();
     }
 
     private void EmployeeRun(Employee temp) {
-        //var temp = EmployeeLogin();
-        System.out.println("You logged as " + temp.getName());
-        System.out.println("1. The beginning of the work day.");
-        System.out.println("2. End of the working day.");
-        System.out.println("3. Exit.");
+
+        for(var employee : localEmployeesDB.getEmployeeList()) {
+            if (employee.equals(temp))
+            {
+                System.out.println("You logged as " + employee.getName());
+                System.out.println("1. The beginning of the work day.");
+                System.out.println("2. End of the working day.");
+                System.out.println("3. Exit.");
 
 
-        var reader = scanner.next();
+                var reader = scanner.next();
 
-        try {
-            selector = Integer.parseInt(reader);
-        } catch (NumberFormatException e) {
-            System.out.println("Incorrect input" + e);
-        }
+                try {
+                    selector = Integer.parseInt(reader);
+                } catch (NumberFormatException e) {
+                    System.out.println("Incorrect input" + e);
+                }
 
-        switch (selector) {
-            case 1:
-                Date inDate = new Date();
-                temp.setTimeOfBeginning(inDate.getHours());
-                System.out.println("Start of work at " + inDate.getHours() + " added.");
-                Sleep();
-                break;
-            case 2:
-                Date outDate = new Date();
-                temp.setTimeOfShutdown(outDate.getHours());
-                System.out.println("End of work at " + outDate.getHours() + " added.");
+                switch (selector) {
+                    case 1:
+                        Date inDate = new Date();
+                        employee.setTimeOfBeginning(inDate.getHours());
+                        System.out.println("Start of work at " + inDate.getHours() + " added.");
+                        Sleep();
+                        break;
+                    case 2:
+                        Date outDate = new Date();
+                        employee.setTimeOfShutdown(outDate.getHours());
+                        System.out.println("End of work at " + outDate.getHours() + " added.");
 
-                //TODO: push to DB
-                temp.addWorkedTime();
-                System.out.println("You totally worked " + temp.getWorkedTime());
-                Sleep();
-                break;
+                        //TODO: push to DB
+                        employee.addWorkedTime();
+                        System.out.println("You totally worked " + employee.getWorkedTime());
+                        Sleep();
+                        break;
 
-            case 3:
-                Sleep();
-                return;
+                    case 3:
+                        Sleep();
+                        return;
 
-                default:
-                    throw new IllegalStateException("Unexpected value" + selector);
+                    default:
+                        throw new IllegalStateException("Unexpected value" + selector);
+                }
+            }
         }
     }
 

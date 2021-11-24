@@ -1,6 +1,5 @@
 package Employees;
 
-import java.util.Date;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;
