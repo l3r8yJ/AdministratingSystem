@@ -3,11 +3,11 @@ package Employees;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;
-    static String Type = "Employee on salary.";
+    static String type = "Employee on salary.";
 
     @Override
-    public String GetType() {
-        return Type;
+    public String getType() {
+        return type;
     }
 
     @Override

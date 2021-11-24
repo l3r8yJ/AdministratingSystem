@@ -198,7 +198,7 @@ public class ConsoleMenu {
                 localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
                 break;
             case 2:
-                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
+                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + selector);

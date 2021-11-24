@@ -7,10 +7,14 @@ public class Employee {
     private String password;
     private int timeOfBeginning;
     private int timeOfShutdown;
-
-    public String GetType()
+    private final String  type;
     {
-        return "Employee";
+        type = "employee";
+    }
+
+    public String getType()
+    {
+        return type;
     }
 
     int workedTime = 0;
@@ -18,7 +22,7 @@ public class Employee {
     public Employee() {
     }
     
-    public Employee(String name, String phoneNumber, String password, int workedTime) {
+    public Employee(String name,String phoneNumber, String password, int workedTime) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
