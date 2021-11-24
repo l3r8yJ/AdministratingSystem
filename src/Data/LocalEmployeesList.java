@@ -55,7 +55,7 @@ public class LocalEmployeesList {
 
             while (line != null) {
                 String[] fields = line.split(",");
-                employeeList.add(new Employee(fields[0], fields[1], fields[2], Integer.parseInt(fields[3])));
+                employeeList.add(new Employee(fields[0], fields[2], fields[3], Integer.parseInt(fields[4])));
                 line = bufferedReader.readLine();
             }
             System.out.println("Data has been successfully updated!");
@@ -63,13 +63,6 @@ public class LocalEmployeesList {
         catch(IOException ex){
             System.out.println("Import Error!");
             System.out.println(ex.getMessage());
-        }
-    }
-
-    public void UpdateEmployee(Employee updatedEmployee) {
-        for (var e : employeeList) {
-            if(updatedEmployee.equals(e)) e = updatedEmployee;
-            else System.out.println("Employee not found!");
         }
     }
 

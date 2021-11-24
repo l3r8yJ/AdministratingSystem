@@ -2,23 +2,22 @@ package Employees;
 
 public class Freelancer extends Employee {
 
-    String Type = "Freelancer";
+    String type = "Freelancer";
     double rate = 1000;
-    double salary;
+    double salary = rate * workedTime;
 
     @Override
     public String getType() {
-        return Type;
+        return type;
     }
 
-    public Freelancer(String name, String phoneNumber, String password) {
+    public Freelancer(String name, String phoneNumber, String password, int workedTime) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
     }
 
     double getSalary() {
-        salary = rate * workedTime;
         return salary;
     }
 }
