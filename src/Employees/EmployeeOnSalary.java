@@ -6,7 +6,7 @@ public class EmployeeOnSalary extends Employee {
     static String Type = "Employee on salary.";
 
     @Override
-    public String GetType() {
+    public String getType() {
         return Type;
     }
 

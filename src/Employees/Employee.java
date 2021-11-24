@@ -8,7 +8,7 @@ public class Employee {
     private int timeOfBeginning;
     private int timeOfShutdown;
 
-    public String GetType()
+    public String getType()
     {
         return "Employee";
     }

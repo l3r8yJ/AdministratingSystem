@@ -38,7 +38,7 @@ public class LocalEmployeesList {
     public void ExportToFile(String fileName) {
        try(FileWriter writer = new FileWriter(fileName, false)) {
            for (var employee : employeeList) {
-               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() +'\n');
+               writer.write(employee.getName() + ',' + employee.getType() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() +'\n');
                writer.flush();
            }
            System.out.println("Database successfully saved!");

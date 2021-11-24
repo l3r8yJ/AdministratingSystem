@@ -7,7 +7,7 @@ public class Freelancer extends Employee {
     double salary;
 
     @Override
-    public String GetType() {
+    public String getType() {
         return Type;
     }
 
