@@ -178,8 +178,27 @@ public class ConsoleMenu {
     }
 
     private void MenuAdd() {
+        System.out.println("Select the type of employee:");
+        System.out.println("1. Employee on salary");
+        System.out.println("2. Freelancer");
+        var reader = scanner.next();
+        try {
+            selector = Integer.parseInt(reader);
+        } catch (NumberFormatException e) {
+            System.out.println("Incorrect input" + e);
+        }
         var tmp = fillForEmployee();
-        localEmployeesDB.AddEmployee(new Employee(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
+        switch (selector) {
+            case 1:
+                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
+                break;
+            case 2:
+                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword()));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + selector);
+        }
+        System.out.println("Employee added successfully");
     }
 
     private void MenuRemove() {
