@@ -3,6 +3,7 @@ package Employees;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;
+    public static String Type = "Employee on salary.";
 
     void setSalary() {
         if (workedTime > 160) {
