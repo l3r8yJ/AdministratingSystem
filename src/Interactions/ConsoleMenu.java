@@ -49,7 +49,7 @@ public class ConsoleMenu {
     private void AdminLogin() {
         System.out.println("Enter password: ");
         var admPass = scanner.next();
-        if (admPass.equals(adminPassword)) AdministrationRun();
+        if (admPass.equals(adminPassword)) AdminRun();
         else System.out.println("wrong password!");
     }
 
@@ -122,7 +122,7 @@ public class ConsoleMenu {
                 }
     }
 
-    private void AdministrationRun() {
+    private void AdminRun() {
         while (true)
         {
             System.out.println();
