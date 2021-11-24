@@ -38,7 +38,7 @@ public class LocalEmployeesList {
     public void ExportToFile(String fileName) {
        try(FileWriter writer = new FileWriter(fileName, false)) {
            for (var employee : employeeList) {
-               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() +'\n');
+               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() + ',' + employee.getType() +'\n');
                writer.flush();
            }
            System.out.println("Database successfully saved!");
@@ -55,7 +55,11 @@ public class LocalEmployeesList {
 
             while (line != null) {
                 String[] fields = line.split(",");
-                employeeList.add(new Employee(fields[0], fields[1], fields[2], Integer.parseInt(fields[3])));
+                if (fields[4].equals("Employee on salary")) {
+                    employeeList.add(new EmployeeOnSalary(fields[0], fields[1], fields[2], Integer.parseInt(fields[3]), fields[4]));
+                } else if (fields[4].equals("Freelancer")) {
+                    employeeList.add(new Freelancer(fields[0], fields[1], fields[2], Integer.parseInt(fields[3]), fields[4]));
+                }
                 line = bufferedReader.readLine();
             }
             System.out.println("Data has been successfully updated!");

@@ -11,11 +11,12 @@ public class Freelancer extends Employee {
         return Type;
     }
 
-    public Freelancer(String name, String phoneNumber, String password, int workedTime) {
+    public Freelancer(String name, String phoneNumber, String password, int workedTime, String type) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
         setWorkedTime(workedTime);
+        this.Type = type;
     }
 
     @Override

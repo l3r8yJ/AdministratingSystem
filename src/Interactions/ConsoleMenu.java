@@ -179,7 +179,7 @@ public class ConsoleMenu {
         System.out.println("Password: ");
         password = read.next();
 
-        return new Employee(name, phoneNumber, password, 0);
+        return new Employee(name, phoneNumber, password, 0, "");
     }
 
     private void MenuAdd() {
@@ -195,10 +195,10 @@ public class ConsoleMenu {
         var tmp = fillForEmployee();
         switch (selector) {
             case 1:
-                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
+                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Freelancer"));
                 break;
             case 2:
-                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime()));
+                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Employee on salary"));
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + selector);

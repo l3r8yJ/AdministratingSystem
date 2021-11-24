@@ -7,7 +7,7 @@ public class Employee {
     private String password;
     private int timeOfBeginning;
     private int timeOfShutdown;
-    private final String  type;
+    private String  type;
     {
         type = "employee";
     }
@@ -22,11 +22,12 @@ public class Employee {
     public Employee() {
     }
     
-    public Employee(String name,String phoneNumber, String password, int workedTime) {
+    public Employee(String name,String phoneNumber, String password, int workedTime, String type) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
         setWorkedTime(workedTime);
+        this.type = type;
     }
 
     public String getPassword() {

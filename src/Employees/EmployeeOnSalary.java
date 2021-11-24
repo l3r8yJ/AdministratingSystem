@@ -3,7 +3,7 @@ package Employees;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;
-    static String type = "Employee on salary.";
+    String type = "Employee on salary.";
 
     @Override
     public String getType() {
@@ -20,10 +20,11 @@ public class EmployeeOnSalary extends Employee {
         }
     }
 
-    public EmployeeOnSalary(String name, String phoneNumber, String password, int workedTime) {
+    public EmployeeOnSalary(String name, String phoneNumber, String password, int workedTime, String type) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
         setWorkedTime(workedTime);
+        this.type = type;
     }
 }
