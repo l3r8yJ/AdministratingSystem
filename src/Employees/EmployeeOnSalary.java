@@ -12,12 +12,10 @@ public class EmployeeOnSalary extends Employee {
 
     @Override
     public double getSalary(){
-        return salary;
-    }
-    public void setSalary() {
         if (workedTime > 160) {
             salary *= 2;
         }
+        return salary;
     }
 
     public EmployeeOnSalary(String name, String phoneNumber, String password, int workedTime, String type) {
