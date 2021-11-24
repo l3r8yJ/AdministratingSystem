@@ -55,7 +55,28 @@ public class ConsoleMenu {
     }
 
     private Employee EmployeeLogin() {
-        //TODO: Login realisation and return employee that logged
+        boolean phoneFound = false;
+        System.out.println("Enter phone number: ");
+        String phoneNumber = scanner.next();
+        for (var e : localEmployeesDB.getEmployeeList()){
+            if (phoneNumber.equals(e.getPhoneNumber())) {
+                phoneFound = true;
+                for (int i = 2; i >= 0; i--) {
+                    System.out.println("Enter password: ");
+                    String password = scanner.next();
+                    if (password.equals(e.getPassword())){
+                        System.out.println("You're welcome!");
+                        return new Employee(e.getName(), e.getPhoneNumber(), e.getPassword());
+                    }
+                    else {
+                        System.out.println("Wrong password!");
+                        System.out.println("Attempts left: " + i);
+                    }
+                }
+            }
+        }
+        if (!phoneFound)
+            System.out.println("Phone number not found...");
         return new Employee();
     }
 
@@ -90,7 +111,6 @@ public class ConsoleMenu {
                 //TODO: push to DB
                 temp.addWorkedTime();
                 System.out.println("You totally worked " + temp.getWorkedTime());
-                localEmployeesDB.ExportToFile(employeesDataBaseFile);
                 Sleep();
                 break;
 
