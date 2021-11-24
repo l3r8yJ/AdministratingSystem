@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;
-    long workedTime = 0;
 
     void setSalary() {
         if (workedTime > 160) {
