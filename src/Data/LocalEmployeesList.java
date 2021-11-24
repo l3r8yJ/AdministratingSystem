@@ -38,7 +38,7 @@ public class LocalEmployeesList {
     public void ExportToFile(String fileName) {
        try(FileWriter writer = new FileWriter(fileName, false)) {
            for (var employee : employeeList) {
-               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() +'\n');
+               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() +'\n');
                writer.flush();
            }
            System.out.println("Database successfully saved!");
@@ -55,7 +55,7 @@ public class LocalEmployeesList {
 
             while (line != null) {
                 String[] fields = line.split(",");
-                employeeList.add(new Employee(fields[0], fields[1], fields[2]));
+                employeeList.add(new Employee(fields[0], fields[1], fields[2], Integer.parseInt(fields[3])));
                 line = bufferedReader.readLine();
             }
             System.out.println("Database successfully imported!");
