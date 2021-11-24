@@ -58,7 +58,7 @@ public class LocalEmployeesList {
                 employeeList.add(new Employee(fields[0], fields[1], fields[2], Integer.parseInt(fields[3])));
                 line = bufferedReader.readLine();
             }
-            System.out.println("Database successfully imported!");
+            System.out.println("Data has been successfully updated!");
         }
         catch(IOException ex){
             System.out.println("Import Error!");

@@ -16,9 +16,6 @@ public class ConsoleMenu {
     public void MainMenu(){
         while (true)
         {
-            localEmployeesDB.Clear();
-            localEmployeesDB.ImportFromFile(employeesDataBaseFile);
-
             System.out.println("Who you are?");
             System.out.println("1. Administrator.");
             System.out.println("2. Employee.");
@@ -34,6 +31,8 @@ public class ConsoleMenu {
 
             switch (selector) {
                 case 1:
+                    localEmployeesDB.Clear();
+                    localEmployeesDB.ImportFromFile(employeesDataBaseFile);
                     AdminLogin();
                     break;
                 case 2:
@@ -82,50 +81,45 @@ public class ConsoleMenu {
 
     private void EmployeeRun(Employee temp) {
 
-        for(var employee : localEmployeesDB.getEmployeeList()) {
-            if (employee.equals(temp))
-            {
-                System.out.println("You logged as " + employee.getName());
-                System.out.println("1. The beginning of the work day.");
-                System.out.println("2. End of the working day.");
-                System.out.println("3. Exit.");
+        System.out.println("You logged as " + temp.getName());
+        System.out.println("1. The beginning of the work day.");
+        System.out.println("2. End of the working day.");
+        System.out.println("3. Exit.");
 
 
-                var reader = scanner.next();
+        var reader = scanner.next();
 
-                try {
-                    selector = Integer.parseInt(reader);
-                } catch (NumberFormatException e) {
-                    System.out.println("Incorrect input" + e);
-                }
+        try {
+            selector = Integer.parseInt(reader);
+        } catch (NumberFormatException e) {
+            System.out.println("Incorrect input" + e);
+        }
 
-                switch (selector) {
-                    case 1:
-                        Date inDate = new Date();
-                        employee.setTimeOfBeginning(inDate.getHours());
-                        System.out.println("Start of work at " + inDate.getHours() + " added.");
-                        Sleep();
-                        break;
-                    case 2:
-                        Date outDate = new Date();
-                        employee.setTimeOfShutdown(outDate.getHours());
-                        System.out.println("End of work at " + outDate.getHours() + " added.");
+        switch (selector) {
+            case 1:
+                Date inDate = new Date();
+                temp.setTimeOfBeginning(inDate.getHours());
+                System.out.println("Start of work at " + inDate.getHours() + " added.");
+                Sleep();
+                break;
 
-                        //TODO: push to DB
-                        employee.addWorkedTime();
-                        System.out.println("You totally worked " + employee.getWorkedTime());
-                        Sleep();
-                        break;
+                case 2:
+                    Date outDate = new Date();
+                    temp.setTimeOfShutdown(outDate.getHours());
+                    System.out.println("End of work at " + outDate.getHours()  + " added.");
+                    temp.addWorkedTime();
+                    System.out.println("You totally worked " + temp.getWorkedTime());
+                    localEmployeesDB.ExportToFile(employeesDataBaseFile);
+                    Sleep();
+                    break;
 
                     case 3:
                         Sleep();
                         return;
 
-                    default:
+                        default:
                         throw new IllegalStateException("Unexpected value" + selector);
                 }
-            }
-        }
     }
 
     private void AdministrationRun() {
