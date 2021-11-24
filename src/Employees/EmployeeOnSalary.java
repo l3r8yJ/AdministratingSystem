@@ -10,9 +10,10 @@ public class EmployeeOnSalary extends Employee {
         }
     }
 
-    public EmployeeOnSalary(String name, String phoneNumber, String password) {
+    public EmployeeOnSalary(String name, String phoneNumber, String password, int workedTime) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
+        setWorkedTime(workedTime);
     }
 }
