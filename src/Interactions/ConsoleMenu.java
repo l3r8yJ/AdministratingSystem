@@ -174,7 +174,6 @@ public class ConsoleMenu {
                     System.out.println("Wrong value. \nTry again please.");
                 } else {
                     isCorrectValue = true;
-                    break;
                 }
             }
             switch (adminSelector) {
