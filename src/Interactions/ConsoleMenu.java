@@ -1,6 +1,7 @@
 package Interactions;
 import Employees.*;
 import Data.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
 import java.util.Scanner;
@@ -58,6 +59,7 @@ public class ConsoleMenu {
         }
     }
 
+    //employees authorization
     private void EmployeeLogin() {
         boolean phoneFound = false;
         Scanner scanner = new Scanner(System.in);
@@ -87,7 +89,7 @@ public class ConsoleMenu {
         }
         if (!phoneFound) System.out.println("Phone number not found...");
     }
-
+    //part of menu for employees
     private void EmployeeRun(Employee temp) {
         Scanner scanner = new Scanner(System.in);
 
@@ -135,6 +137,7 @@ public class ConsoleMenu {
         }
     }
 
+    //administrator authorization
     private void AdminLogin() {
         System.out.println("Enter password: ");
         Scanner passScanner = new Scanner(System.in);
@@ -143,7 +146,7 @@ public class ConsoleMenu {
         if (comparablePassword.equals(adminPassword)) AdminRun();
         else System.out.println("wrong password!");
     }
-
+    //part of menu for administrator
     private void AdminRun() {
         int adminSelector = 0;
         Scanner aScanner = new Scanner(System.in);
@@ -191,7 +194,8 @@ public class ConsoleMenu {
         }
     }
 
-    private Employee fillForEmployee() {
+    //method for filling employee's data
+    private @NotNull Employee fillForEmployee(int selector) {
         String name;
         String phoneNumber;
         String password;
@@ -206,23 +210,37 @@ public class ConsoleMenu {
         System.out.println("Password: ");
         password = read.next();
 
-        return new Employee(name, phoneNumber, password, 0, "");
+        if (selector == 1) {
+            return new EmployeeOnSalary(name, phoneNumber, password, 0, "Employee on salary");
+        } else if(selector == 2) {
+            return new Freelancer(name, phoneNumber, password, 0, "Freelancer");
+        }
+        return new Employee() {};
     }
 
-    private void AddEmployee() {
-        System.out.println("Select the type of employee:");
-        System.out.println("1. Employee on salary");
-        System.out.println("2. Freelancer");
-        Scanner addScanner = new Scanner(System.in);
-        var reader = addScanner.next();
 
-        try {
-            selector = Integer.parseInt(reader);
-        } catch (NumberFormatException e) {
-            System.out.println("Incorrect input" + e);
+    //add employees to data from menu
+    private void AddEmployee() {
+        boolean isCorrectInput = false;
+        while (!isCorrectInput) {
+            System.out.println("Select the type of employee:");
+            System.out.println("1. Employee on salary");
+            System.out.println("2. Freelancer");
+
+            Scanner addScanner = new Scanner(System.in);
+            var reader = addScanner.next();
+            int selector = 0;
+
+            try {
+                selector = Integer.parseInt(reader);
+            } catch (NumberFormatException e) {
+                System.out.println("Incorrect input" + e);
+            }
+
+            isCorrectInput = isCorrectValueMethod(reader, 2, selector);
         }
 
-        var tmp = fillForEmployee();
+        var tmp = fillForEmployee(selector);
         switch (selector) {
             case 1:
                 localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Employee on salary"));
@@ -235,7 +253,7 @@ public class ConsoleMenu {
         }
         System.out.println("Employee added successfully");
     }
-
+    //delete employees to data from menu
     private void DeleteEmployee() {
         Scanner read = new Scanner(System.in);
         System.out.println("Are you sure?(Yes/No)");

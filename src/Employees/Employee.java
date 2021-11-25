@@ -1,6 +1,6 @@
 package Employees;
-
-public class Employee {
+//Base employees class
+public abstract class Employee {
 
     private String name;
     private String phoneNumber;
