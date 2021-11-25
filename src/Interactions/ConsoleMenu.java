@@ -2,6 +2,7 @@ package Interactions;
 import Employees.*;
 import Data.*;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -106,20 +107,21 @@ public class ConsoleMenu {
         } catch (NumberFormatException e) {
             System.out.println("Incorrect input" + e);
         }
+        Calendar calendar = Calendar.getInstance();
 
         switch (selector) {
             case 1:
-                Date inDate = new Date();
-                temp.setTimeOfBeginning(inDate.getHours());
-                System.out.println("Start of work at " + inDate.getHours() + " added.");
+                int inDate = calendar.get(Calendar.HOUR);
+                temp.setTimeOfBeginning(inDate);
+                System.out.println("Start of work at " + inDate + " added.");
 
                 Sleep();
                 break;
 
             case 2:
-                Date outDate = new Date();
-                temp.setTimeOfShutdown(outDate.getHours());
-                System.out.println("End of work at " + outDate.getHours()  + " added.");
+                int outDate = calendar.get(Calendar.HOUR);
+                temp.setTimeOfShutdown(outDate);
+                System.out.println("End of work at " + outDate + " added.");
                 temp.addWorkedTime();
                 System.out.println("You totally worked " + temp.getWorkedTime());
 
