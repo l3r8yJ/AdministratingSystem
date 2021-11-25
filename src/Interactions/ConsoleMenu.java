@@ -34,6 +34,7 @@ public class ConsoleMenu {
                 case 1:
                     localEmployeesDB.Clear();
                     localEmployeesDB.ImportFromFile(employeesDataBaseFile);
+
                     AdminLogin();
                     break;
                 case 2:
@@ -50,6 +51,7 @@ public class ConsoleMenu {
     private void AdminLogin() {
         System.out.println("Enter password: ");
         var admPass = scanner.next();
+
         if (admPass.equals(adminPassword)) AdminRun();
         else System.out.println("wrong password!");
     }
@@ -58,26 +60,28 @@ public class ConsoleMenu {
         boolean phoneFound = false;
         System.out.println("Enter phone number: ");
         String phoneNumber = scanner.next();
+
         for (var e : localEmployeesDB.getEmployeeList()){
             if (phoneNumber.equals(e.getPhoneNumber())) {
                 phoneFound = true;
+
                 for (int i = 2; i >= 0; i--) {
                     System.out.println("Enter password: ");
                     String password = scanner.next();
+
                     if (password.equals(e.getPassword())){
                         System.out.println("You're welcome!");
                         EmployeeRun(e);
+
                         return;
-                    }
-                    else {
+                    } else {
                         System.out.println("Wrong password!");
                         System.out.println("Attempts left: " + i);
                     }
                 }
             }
         }
-        if (!phoneFound)
-            System.out.println("Phone number not found...");
+        if (!phoneFound) System.out.println("Phone number not found...");
     }
 
     private void EmployeeRun(Employee temp) {
@@ -86,7 +90,6 @@ public class ConsoleMenu {
         System.out.println("1. The beginning of the work day.");
         System.out.println("2. End of the working day.");
         System.out.println("3. Exit.");
-
 
         var reader = scanner.next();
 
@@ -101,6 +104,7 @@ public class ConsoleMenu {
                 Date inDate = new Date();
                 temp.setTimeOfBeginning(inDate.getHours());
                 System.out.println("Start of work at " + inDate.getHours() + " added.");
+
                 Sleep();
                 break;
 
@@ -110,7 +114,9 @@ public class ConsoleMenu {
                     System.out.println("End of work at " + outDate.getHours()  + " added.");
                     temp.addWorkedTime();
                     System.out.println("You totally worked " + temp.getWorkedTime());
+
                     localEmployeesDB.ExportToFile(employeesDataBaseFile);
+
                     Sleep();
                     break;
 
@@ -147,10 +153,10 @@ public class ConsoleMenu {
                     localEmployeesDB.ConsolePrint();
                     break;
                 case 2:
-                    MenuAdd();
+                    AddEmployee();
                     break;
                 case 3:
-                    MenuRemove();
+                    DeleteEmployee();
                     break;
                 case 4:
                     localEmployeesDB.createReport(workReportFile);
@@ -182,23 +188,25 @@ public class ConsoleMenu {
         return new Employee(name, phoneNumber, password, 0, "");
     }
 
-    private void MenuAdd() {
+    private void AddEmployee() {
         System.out.println("Select the type of employee:");
         System.out.println("1. Employee on salary");
         System.out.println("2. Freelancer");
         var reader = scanner.next();
+
         try {
             selector = Integer.parseInt(reader);
         } catch (NumberFormatException e) {
             System.out.println("Incorrect input" + e);
         }
+
         var tmp = fillForEmployee();
         switch (selector) {
             case 1:
-                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Freelancer"));
+                localEmployeesDB.AddEmployee(new EmployeeOnSalary(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Employee on salary"));
                 break;
             case 2:
-                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Employee on salary"));
+                localEmployeesDB.AddEmployee(new Freelancer(tmp.getName(), tmp.getPhoneNumber(), tmp.getPassword(), tmp.getWorkedTime(), "Freelancer"));
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + selector);
@@ -206,11 +214,24 @@ public class ConsoleMenu {
         System.out.println("Employee added successfully");
     }
 
-    private void MenuRemove() {
-        System.out.println("Phone number: ");
+    private void DeleteEmployee() {
         Scanner read = new Scanner(System.in);
-        var phoneNumber = read.next();
-        localEmployeesDB.DeleteEmployee(phoneNumber);
+        System.out.println("Are you sure?(Yes/No)");
+
+        if (read.next().toLowerCase().equals("no")) {
+            System.out.println("You chooses no");
+        } else if (read.next().toLowerCase().equals("yes")){
+
+            System.out.println("Enter phone number: ");
+            var phoneNumber = read.next();
+
+            if (localEmployeesDB.DeleteEmployee(phoneNumber)) System.out.println("Employee was deleted!");
+
+            else System.out.println("Employee not found!");
+
+        } else {
+            System.out.println("wrong symbols!");
+        }
     }
 
     private void Sleep() {

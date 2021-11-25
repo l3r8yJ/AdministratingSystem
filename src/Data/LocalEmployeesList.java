@@ -23,8 +23,17 @@ public class LocalEmployeesList {
         else System.out.println("Empty employee");
     }
 
-    public void DeleteEmployee(String number) {
-        employeeList.removeIf(e -> e.getPhoneNumber().equals(number));
+    public boolean DeleteEmployee(String number) {
+        boolean isContainAnEmployee = false;
+
+        for (var e : employeeList) {
+            if (e.getPhoneNumber().equals(number)) {
+                isContainAnEmployee = true;
+                employeeList.remove(e);
+                break;
+            }
+        }
+        return isContainAnEmployee;
     }
 
     public void ConsolePrint() {
