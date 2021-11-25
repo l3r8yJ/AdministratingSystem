@@ -116,25 +116,25 @@ public class ConsoleMenu {
                 Sleep();
                 break;
 
-                case 2:
-                    Date outDate = new Date();
-                    temp.setTimeOfShutdown(outDate.getHours());
-                    System.out.println("End of work at " + outDate.getHours()  + " added.");
-                    temp.addWorkedTime();
-                    System.out.println("You totally worked " + temp.getWorkedTime());
+            case 2:
+                Date outDate = new Date();
+                temp.setTimeOfShutdown(outDate.getHours());
+                System.out.println("End of work at " + outDate.getHours()  + " added.");
+                temp.addWorkedTime();
+                System.out.println("You totally worked " + temp.getWorkedTime());
 
-                    localEmployeesDB.ExportToFile(employeesDataBaseFile);
+                localEmployeesDB.ExportToFile(employeesDataBaseFile);
 
-                    Sleep();
-                    break;
+                Sleep();
+                break;
 
-                    case 3:
-                        Sleep();
-                        return;
+            case 3:
+                Sleep();
+                return;
 
-                        default:
-                            throw new IllegalStateException("Unexpected value" + selector);
-                }
+            default:
+                    throw new IllegalStateException("Unexpected value" + selector);
+        }
     }
 
     private void AdminLogin() {
