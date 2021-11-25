@@ -3,7 +3,6 @@ import Employees.*;
 import Data.*;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleMenu {
@@ -13,12 +12,14 @@ public class ConsoleMenu {
     String workReportFile = "workReport.txt";
     String adminPassword = "root";
 
+    //Main menu method
     public void MainMenu(){
         Scanner scanner = new Scanner(System.in);
 
         while (true)
         {
             boolean isCorrectValue = false;
+            // menu picker for user types
             while (!isCorrectValue) {
                 System.out.println("Who you are?");
                 System.out.println("1. Administrator.");
@@ -26,38 +27,33 @@ public class ConsoleMenu {
                 System.out.println("3. Exit");
 
                 var reader = scanner.next();
-
                 try {
                     selector = Integer.parseInt(reader);
                 } catch (NumberFormatException e) {
                     e.getMessage();
                 }
 
-                if(selector > 3 || selector < 1) {
-                    System.out.println("Wrong value. \nTry again please.");
-                } else {
-                    isCorrectValue = true;
-                }
+                isCorrectValue = isCorrectValueMethod(reader, 3, selector);
             }
 
             switch (selector) {
                 case 1:
+                    //importing DB file
                     localEmployeesDB.Clear();
                     localEmployeesDB.ImportFromFile(employeesDataBaseFile);
 
                     AdminLogin();
                     break;
 
-                    case 2:
-                        EmployeeLogin();
-                        break;
+                case 2:
+                    EmployeeLogin();
+                    break;
 
-                    case 3:
-                        return;
+                case 3:
+                    return;
 
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + selector);
-
+                default:
+                    throw new IllegalStateException("Unexpected value: " + selector);
             }
         }
     }
@@ -165,18 +161,13 @@ public class ConsoleMenu {
                 System.out.println("5. Exit.");
 
                 var reader = aScanner.next();
-
                 try {
                     adminSelector = Integer.parseInt(reader);
                 } catch (NumberFormatException e) {
-                    System.out.println("Incorrect input" + e);
+                    e.getMessage();
                 }
 
-                if(adminSelector > 5 || adminSelector < 1) {
-                    System.out.println("Wrong value. \nTry again please.");
-                } else {
-                    isCorrectValue = true;
-                }
+                isCorrectValue = isCorrectValueMethod(reader, 5, adminSelector);
             }
             switch (adminSelector) {
                 case 1:
@@ -263,6 +254,16 @@ public class ConsoleMenu {
         } else {
             System.out.println("wrong symbols!");
         }
+    }
+
+    private boolean isCorrectValueMethod(String reader, int lastValue, int selector) {
+        boolean isCorrectValue = false;
+        if(selector > lastValue || selector < 1) {
+            System.out.println("Wrong value. \nTry again please.");
+        } else {
+            isCorrectValue = true;
+        }
+        return isCorrectValue;
     }
 
     private void Sleep() {
