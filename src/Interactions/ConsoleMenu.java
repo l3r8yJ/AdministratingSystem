@@ -6,28 +6,37 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleMenu {
-
+    int selector;
     LocalEmployeesList localEmployeesDB = new LocalEmployeesList();
     String employeesDataBaseFile = "employees.csv";
     String workReportFile = "workReport.txt";
-    Scanner scanner = new Scanner(System.in);
-    int selector;
     String adminPassword = "root";
 
     public void MainMenu(){
+        Scanner scanner = new Scanner(System.in);
+
         while (true)
         {
-            System.out.println("Who you are?");
-            System.out.println("1. Administrator.");
-            System.out.println("2. Employee.");
-            System.out.println("3. Exit");
+            boolean isCorrectValue = false;
+            while (!isCorrectValue) {
+                System.out.println("Who you are?");
+                System.out.println("1. Administrator.");
+                System.out.println("2. Employee.");
+                System.out.println("3. Exit");
 
-            var reader = scanner.next();
+                var reader = scanner.next();
 
-            try {
-                selector = Integer.parseInt(reader);
-            } catch (NumberFormatException e) {
-                System.out.println("Incorrect input" + e);
+                try {
+                    selector = Integer.parseInt(reader);
+                } catch (NumberFormatException e) {
+                    e.getMessage();
+                }
+
+                if(selector > 3 || selector < 1) {
+                    System.out.println("Wrong value. \nTry again please.");
+                } else {
+                    isCorrectValue = true;
+                }
             }
 
             switch (selector) {
@@ -37,28 +46,26 @@ public class ConsoleMenu {
 
                     AdminLogin();
                     break;
-                case 2:
-                    EmployeeLogin();
-                    break;
-                case 3:
-                    return;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + selector);
+
+                    case 2:
+                        EmployeeLogin();
+                        break;
+
+                    case 3:
+                        return;
+
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + selector);
+
             }
         }
     }
 
-    private void AdminLogin() {
-        System.out.println("Enter password: ");
-        var admPass = scanner.next();
-
-        if (admPass.equals(adminPassword)) AdminRun();
-        else System.out.println("wrong password!");
-    }
-
     private void EmployeeLogin() {
         boolean phoneFound = false;
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter phone number: ");
+
         String phoneNumber = scanner.next();
 
         for (var e : localEmployeesDB.getEmployeeList()){
@@ -85,6 +92,7 @@ public class ConsoleMenu {
     }
 
     private void EmployeeRun(Employee temp) {
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("You logged as " + temp.getName());
         System.out.println("1. The beginning of the work day.");
@@ -125,30 +133,51 @@ public class ConsoleMenu {
                         return;
 
                         default:
-                        throw new IllegalStateException("Unexpected value" + selector);
+                            throw new IllegalStateException("Unexpected value" + selector);
                 }
     }
 
+    private void AdminLogin() {
+        System.out.println("Enter password: ");
+        Scanner passScanner = new Scanner(System.in);
+        var comparablePassword = passScanner.next();
+
+        if (comparablePassword.equals(adminPassword)) AdminRun();
+        else System.out.println("wrong password!");
+    }
+
     private void AdminRun() {
+        int adminSelector = 0;
+        Scanner aScanner = new Scanner(System.in);
+
         while (true)
         {
-            System.out.println();
-            System.out.println("Menu");
-            System.out.println("1. Show list of employees.");
-            System.out.println("2. Add employee to list.");
-            System.out.println("3. Remove employee from list.");
-            System.out.println("4. Create work report.");
-            System.out.println("5. Exit.");
+            System.out.println("\nAdministration mode");
+            boolean isCorrectValue = false;
 
-            var reader = scanner.next();
+            while (!isCorrectValue) {
+                System.out.println("1. Show list of employees.");
+                System.out.println("2. Add employee to list.");
+                System.out.println("3. Remove employee from list.");
+                System.out.println("4. Create work report.");
+                System.out.println("5. Exit.");
 
-            try {
-                selector = Integer.parseInt(reader);
-            } catch (NumberFormatException e) {
-                System.out.println("Incorrect input" + e);
+                var reader = aScanner.next();
+
+                try {
+                    adminSelector = Integer.parseInt(reader);
+                } catch (NumberFormatException e) {
+                    System.out.println("Incorrect input" + e);
+                }
+
+                if(adminSelector > 5 || adminSelector < 1) {
+                    System.out.println("Wrong value. \nTry again please.");
+                } else {
+                    isCorrectValue = true;
+                    break;
+                }
             }
-
-            switch (selector) {
+            switch (adminSelector) {
                 case 1:
                     localEmployeesDB.ConsolePrint();
                     break;
@@ -165,7 +194,7 @@ public class ConsoleMenu {
                     localEmployeesDB.ExportToFile(employeesDataBaseFile);
                     return;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + selector);
+                    throw new IllegalStateException("Unexpected value: " + adminSelector);
             }
         }
     }
@@ -192,7 +221,8 @@ public class ConsoleMenu {
         System.out.println("Select the type of employee:");
         System.out.println("1. Employee on salary");
         System.out.println("2. Freelancer");
-        var reader = scanner.next();
+        Scanner addScanner = new Scanner(System.in);
+        var reader = addScanner.next();
 
         try {
             selector = Integer.parseInt(reader);

@@ -7,7 +7,7 @@ public class Employee {
     private String password;
     private int timeOfBeginning;
     private int timeOfShutdown;
-    private String  type;
+    private String type;
     {
         type = "employee";
     }

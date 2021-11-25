@@ -2,7 +2,7 @@ package Employees;
 
 public class Freelancer extends Employee {
 
-    String Type = "Freelancer";
+    String Type;
     double rate = 1000;
     double salary;
 
@@ -11,17 +11,17 @@ public class Freelancer extends Employee {
         return Type;
     }
 
+    @Override
+    public double getSalary() {
+        salary = rate * workedTime;
+        return salary;
+    }
+
     public Freelancer(String name, String phoneNumber, String password, int workedTime, String type) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
         setWorkedTime(workedTime);
         this.Type = type;
-    }
-
-    @Override
-    public double getSalary() {
-        salary = rate * workedTime;
-        return salary;
     }
 }

@@ -44,6 +44,7 @@ public class LocalEmployeesList {
         }
         for (var e : employeeList) System.out.println(e.getName() + " " + e.getPhoneNumber() + " " + e.getWorkedTime());
     }
+
     public void ExportToFile(String fileName) {
        try(FileWriter writer = new FileWriter(fileName, false)) {
            for (var employee : employeeList) {
@@ -56,6 +57,7 @@ public class LocalEmployeesList {
            System.out.println(ex.getMessage());
        }
     }
+
     public void ImportFromFile(String fileName) {
         try(FileReader reader = new FileReader(fileName))
         {
