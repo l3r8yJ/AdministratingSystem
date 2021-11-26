@@ -91,20 +91,24 @@ public class ConsoleMenu {
     }
     //part of menu for employees
     private void EmployeeRun(Employee temp) {
-        Scanner scanner = new Scanner(System.in);
+        boolean isCorrectInput = false;
+        while (!isCorrectInput) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("You logged as " + temp.getName());
+            System.out.println("1. The beginning of the work day.");
+            System.out.println("2. End of the working day.");
+            System.out.println("3. Exit.");
 
-        System.out.println("You logged as " + temp.getName());
-        System.out.println("1. The beginning of the work day.");
-        System.out.println("2. End of the working day.");
-        System.out.println("3. Exit.");
+            var reader = scanner.next();
 
-        var reader = scanner.next();
-
-        try {
-            selector = Integer.parseInt(reader);
-        } catch (NumberFormatException e) {
-            System.out.println("Incorrect input" + e);
+            try {
+                selector = Integer.parseInt(reader);
+            } catch (NumberFormatException e) {
+                System.out.println("Incorrect input" + e);
+            }
+            isCorrectInput = isCorrectValueMethod(reader, 3, selector);
         }
+
         Calendar calendar = Calendar.getInstance();
 
         switch (selector) {
@@ -136,7 +140,6 @@ public class ConsoleMenu {
                     throw new IllegalStateException("Unexpected value" + selector);
         }
     }
-
     //administrator authorization
     private void AdminLogin() {
         System.out.println("Enter password: ");
@@ -193,7 +196,6 @@ public class ConsoleMenu {
             }
         }
     }
-
     //method for filling employee's data
     private @NotNull Employee fillForEmployee(int selector) {
         String name;
@@ -217,8 +219,6 @@ public class ConsoleMenu {
         }
         return new Employee() {};
     }
-
-
     //add employees to data from menu
     private void AddEmployee() {
         boolean isCorrectInput = false;
