@@ -1,7 +1,6 @@
 package Employees;
 
 public class Freelancer extends Employee {
-
     String Type;
     double rate = 1000;
     double salary;

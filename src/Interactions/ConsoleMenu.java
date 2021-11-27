@@ -2,7 +2,6 @@ package Interactions;
 import Employees.*;
 import Data.*;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -15,6 +14,7 @@ public class ConsoleMenu {
 
     //Main menu method
     public void MainMenu(){
+        localEmployeesDB.ImportFromFile(employeesDataBaseFile);
         Scanner scanner = new Scanner(System.in);
 
         while (true)
@@ -96,7 +96,8 @@ public class ConsoleMenu {
             System.out.println("You logged as " + temp.getName());
             System.out.println("1. The beginning of the work day.");
             System.out.println("2. End of the working day.");
-            System.out.println("3. Exit.");
+            System.out.println("3. Show my information.");
+            System.out.println("4. Exit.");
 
             var reader = scanner.next();
 
@@ -105,7 +106,7 @@ public class ConsoleMenu {
             } catch (NumberFormatException e) {
                 System.out.println("Incorrect input" + e);
             }
-            isCorrectInput = isCorrectValueMethod(reader, 3, selector);
+            isCorrectInput = isCorrectValueMethod(reader, 4, selector);
         }
 
         Calendar calendar = Calendar.getInstance();
@@ -132,6 +133,9 @@ public class ConsoleMenu {
                 break;
 
             case 3:
+                System.out.println(temp.getName() + " worked at this month: " + temp.getWorkedTime() + " hours." + "\nYour salary at this month " + temp.getSalary() + " roubles");
+                break;
+            case 4:
                 Sleep();
                 return;
 
