@@ -58,7 +58,6 @@ public class ConsoleMenu {
             }
         }
     }
-
     //employees authorization
     private void EmployeeLogin() {
         boolean phoneFound = false;

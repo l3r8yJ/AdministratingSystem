@@ -83,6 +83,7 @@ public class LocalEmployeesList {
 
     public void createReport(String fileName){
         try(FileWriter writer = new FileWriter(fileName, false)) {
+            writer.write("Report created at " + Calendar.getInstance().getTime() + '\n');
             for (var employee : employeeList) {
                 if (employee.getWorkedTime() > 1)
                     writer.write(employee.getType() + ' ' + employee.getName() + " worked for " + employee.getWorkedTime() + " hours and earned " + employee.getSalary() + " roubles" + '\n');
