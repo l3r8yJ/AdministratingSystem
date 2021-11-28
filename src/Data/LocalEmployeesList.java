@@ -1,12 +1,15 @@
 package Data;
 
-import Employees.*;
+import Employees.Employee;
+import Employees.EmployeeOnSalary;
+import Employees.Freelancer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class LocalEmployeesList {
 
@@ -19,7 +22,8 @@ public class LocalEmployeesList {
                 return;
             }
         }
-        if (!employee.getName().isEmpty() && !employee.getPhoneNumber().isEmpty() && !employee.getPassword().isEmpty()) employeeList.add(employee);
+        if (!employee.getName().isEmpty() && !employee.getPhoneNumber().isEmpty() && !employee.getPassword().isEmpty())
+            employeeList.add(employee);
         else System.out.println("Empty employee");
     }
 
@@ -37,8 +41,7 @@ public class LocalEmployeesList {
     }
 
     public void ConsolePrint() {
-        if (employeeList.isEmpty())
-        {
+        if (employeeList.isEmpty()) {
             System.out.println("Empty list...");
             return;
         }
@@ -46,21 +49,20 @@ public class LocalEmployeesList {
     }
 
     public void ExportToFile(String fileName) {
-       try(FileWriter writer = new FileWriter(fileName, false)) {
-           for (var employee : employeeList) {
-               writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() + ',' + employee.getType() +'\n');
-               writer.flush();
-           }
-           System.out.println("Database successfully saved!");
-       } catch (IOException ex) {
-           System.out.println("Saving error!");
-           System.out.println(ex.getMessage());
-       }
+        try (FileWriter writer = new FileWriter(fileName, false)) {
+            for (var employee : employeeList) {
+                writer.write(employee.getName() + ',' + employee.getPhoneNumber() + ',' + employee.getPassword() + ',' + employee.getWorkedTime() + ',' + employee.getType() + '\n');
+                writer.flush();
+            }
+            System.out.println("Database successfully saved!");
+        } catch (IOException ex) {
+            System.out.println("Saving error!");
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void ImportFromFile(String fileName) {
-        try(FileReader reader = new FileReader(fileName))
-        {
+        try (FileReader reader = new FileReader(fileName)) {
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line = bufferedReader.readLine();
             //checking the types
@@ -74,15 +76,14 @@ public class LocalEmployeesList {
                 line = bufferedReader.readLine();
             }
             System.out.println("Data has been successfully updated!");
-        }
-        catch(IOException ex){
+        } catch (IOException ex) {
             System.out.println("Import Error!");
             System.out.println(ex.getMessage());
         }
     }
 
-    public void createReport(String fileName){
-        try(FileWriter writer = new FileWriter(fileName, false)) {
+    public void createReport(String fileName) {
+        try (FileWriter writer = new FileWriter(fileName, false)) {
             writer.write("Report created at " + Calendar.getInstance().getTime() + '\n');
             for (var employee : employeeList) {
                 if (employee.getWorkedTime() > 1)

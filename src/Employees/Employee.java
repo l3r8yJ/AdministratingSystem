@@ -1,4 +1,5 @@
 package Employees;
+
 //Base employees class
 public abstract class Employee {
 
@@ -8,21 +9,20 @@ public abstract class Employee {
     private int timeOfBeginning;
     private int timeOfShutdown;
     private String type;
+    int workedTime = 0;
     {
         type = "employee";
     }
 
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
-    int workedTime = 0;
 
     public Employee() {
     }
-    
-    public Employee(String name,String phoneNumber, String password, int workedTime, String type) {
+
+    public Employee(String name, String phoneNumber, String password, int workedTime, String type) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setPassword(password);
@@ -89,7 +89,7 @@ public abstract class Employee {
         workedTime += timeOfShutdown - timeOfBeginning;
     }
 
-    public double getSalary(){
+    public double getSalary() {
         return 0;
     }
 }
