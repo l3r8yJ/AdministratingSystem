@@ -18,7 +18,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
         label.setText("Choose an authorization method");
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.NORTH);
-        label.setForeground(Color.YELLOW);
+        label.setForeground(Color.BLACK);
         label.setFont(mainFont);
         label.setBounds(0,0,width,height);
         //button part
@@ -33,7 +33,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
         this.setResizable(false);
         this.setVisible(true);
         this.setLayout(null);
-        this.getContentPane().setBackground(Color.BLACK);
+        this.getContentPane().setBackground(Color.WHITE);
         this.add(label);
         this.add(administrationButton);
         this.add(employeeButton);
@@ -43,6 +43,7 @@ public class MainMenuGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(administrationButton)) {
             System.out.println("ADMINISTRATION");
+            new AdminLoginFrame();
         }
         if(e.getSource().equals(employeeButton)) {
             System.out.println("EMPLOYEE");
