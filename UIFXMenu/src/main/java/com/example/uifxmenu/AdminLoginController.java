@@ -34,7 +34,22 @@ public class AdminLoginController {
 
     @FXML
     void initialize() {
-        loginButton.setOnAction(actionEvent -> System.out.println("you entered + " + passField.getText()));
+        loginButton.setOnAction(actionEvent -> {
+            if (passField.getText().equals("root")) {
+                Stage stage = new Stage();
+                stage.setTitle("Administration");
+                stage.setResizable(false);
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("AdminPage-view.fxml"));
+                Scene scene;
+                try {
+                    scene = new Scene(loader.load(), 270, 800);
+                    stage.setScene(scene);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                stage.show();
+            } else System.out.println("wrong pass!");
+        });
     }
 
 }
