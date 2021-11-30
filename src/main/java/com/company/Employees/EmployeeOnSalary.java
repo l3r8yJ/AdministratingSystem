@@ -1,4 +1,4 @@
-package Employees;
+package com.company.Employees;
 
 public class EmployeeOnSalary extends Employee {
     double salary = 120000.0;

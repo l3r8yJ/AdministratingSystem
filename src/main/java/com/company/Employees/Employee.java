@@ -1,4 +1,4 @@
-package Employees;
+package com.company.Employees;
 
 //Base employees class
 public abstract class Employee {

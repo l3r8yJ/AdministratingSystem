@@ -1,7 +1,6 @@
-package Interactions;
-import Employees.*;
-import Data.*;
-import org.jetbrains.annotations.NotNull;
+package com.company.Interactions;
+import com.company.Employees.*;
+import com.company.Data.*;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -173,7 +172,7 @@ public class ConsoleMenu {
                 try {
                     adminSelector = Integer.parseInt(reader);
                 } catch (NumberFormatException e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
 
                 isCorrectValue = isCorrectValueMethod(reader, 5, adminSelector);
@@ -200,7 +199,7 @@ public class ConsoleMenu {
         }
     }
     //method for filling employee's data
-    private @NotNull Employee fillForEmployee(int selector) {
+    private Employee fillForEmployee(int selector) {
         String name;
         String phoneNumber;
         String password;

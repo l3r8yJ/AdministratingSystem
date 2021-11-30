@@ -1,8 +1,8 @@
-package Data;
+package com.company.Data;
 
-import Employees.Employee;
-import Employees.EmployeeOnSalary;
-import Employees.Freelancer;
+import com.company.Employees.Employee;
+import com.company.Employees.EmployeeOnSalary;
+import com.company.Employees.Freelancer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

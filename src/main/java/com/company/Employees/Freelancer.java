@@ -1,4 +1,4 @@
-package Employees;
+package com.company.Employees;
 
 public class Freelancer extends Employee {
     String Type;

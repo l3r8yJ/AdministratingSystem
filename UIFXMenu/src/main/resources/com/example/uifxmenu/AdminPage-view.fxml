@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.AdminPageController">
    <children>
-      <ListView fx:id="listOfEmployees" layoutX="14.0" layoutY="41.0" prefHeight="593.0" prefWidth="240.0" />
+      <ListView fx:id="listOfEmployees" onMouseClicked="#handleMouseClick" layoutX="14.0" layoutY="41.0" prefHeight="593.0" prefWidth="240.0" />
       <Button fx:id="addButton" layoutX="14.0" layoutY="650.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Add" />
       <Button fx:id="deleteButton" layoutX="14.0" layoutY="700.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Delete" />
       <Button fx:id="createReportButton" layoutX="14.0" layoutY="748.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Create report" />
