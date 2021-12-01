@@ -6,15 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="460.0" style="-fx-background-color: #99CCFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.AdminPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.AdminPageController">
    <children>
       <ListView fx:id="listOfEmployees" layoutX="14.0" layoutY="41.0" prefHeight="593.0" prefWidth="430.0" />
-      <Button fx:id="addButton" layoutX="123.0" layoutY="650.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #CCFF99;" text="Add" />
-      <Button fx:id="deleteButton" layoutX="123.0" layoutY="701.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #CCFF99;" text="Delete" />
-      <Button fx:id="createReportButton" layoutX="122.0" layoutY="748.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #CCFF99;" text="Create report" />
-      <Label fx:id="listLabel" layoutX="153.0" layoutY="14.0" text="List of employees">
+      <Button fx:id="addButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #0099CC;" text="Add" textFill="WHITE">
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="SansSerif Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="deleteButton" layoutX="166.0" layoutY="643.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #0099CC;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="createReportButton" layoutX="317.0" layoutY="643.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #0099CC;" text="Create report" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="16.0" />
+         </font></Button>
+      <Label fx:id="listLabel" layoutX="143.0" layoutY="14.0" text="List of employees">
+         <font>
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
    </children>
