@@ -1,16 +1,11 @@
 package com.example.uifxmenu;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.company.Employees.Employee;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 public class ShowPageController {

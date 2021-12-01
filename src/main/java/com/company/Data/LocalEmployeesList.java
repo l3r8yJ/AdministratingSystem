@@ -106,9 +106,9 @@ public class LocalEmployeesList {
         }
     }
 
-    public Employee getEmployee(String name, String phoneNumber) {
+    public Employee getEmployee(String password, String phoneNumber) {
         for (var e : employeeList) {
-            if (e.getName().equals(name) && e.getPhoneNumber().equals(phoneNumber)) {
+            if (e.getPassword().equals(password) && e.getPhoneNumber().equals(phoneNumber)) {
                     return e;
             } else break;
         }
