@@ -8,6 +8,7 @@ import com.company.Employees.Employee;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
@@ -26,10 +27,7 @@ public class ShowPageController {
     private URL location;
 
     @FXML
-    private Label atJobLabel;
-
-    @FXML
-    private Label atJobLabelBoolean;
+    private Button closeButton;
 
     @FXML
     private Label nameLabel;
@@ -38,7 +36,13 @@ public class ShowPageController {
     private Label phoneLabel;
 
     @FXML
+    private Label salaryLabel;
+
+    @FXML
     private Label typeLabel;
+
+    @FXML
+    private Label workedLabel;
 
     @FXML
     void initialize() {
@@ -46,6 +50,8 @@ public class ShowPageController {
             nameLabel.setText(settledEmployee.getName());
             phoneLabel.setText(settledEmployee.getPhoneNumber());
             typeLabel.setText(settledEmployee.getType());
+            salaryLabel.setText(settledEmployee.getSalary() + " rubles");
+            workedLabel.setText(String.valueOf(settledEmployee.getWorkedTime()));
         }
     }
 }

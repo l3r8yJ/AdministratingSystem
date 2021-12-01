@@ -22,6 +22,25 @@ import org.jetbrains.annotations.NotNull;
 
 public class AdminPageController {
 
+    private void createEmployeeShow() {
+        ShowPageController spc = new ShowPageController();
+        Stage stage = new Stage();
+        Employee emp = listOfEmployees.getSelectionModel().getSelectedItem();
+        spc.setInitData(emp);
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("ShowPage-view.fxml"));
+        loader.setController(spc);
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setResizable(false);
+        stage.setTitle("EmployeeView");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     private ResourceBundle resources;
 
@@ -49,7 +68,6 @@ public class AdminPageController {
         LocalEmployeesList employeesDB = new LocalEmployeesList();
         employeesDB.ImportFromFile(fileName);
         listOfEmployees.getItems().setAll(employeesDB.getEmployeeList());
-
 //        listOfEmployees.setCellFactory(param -> new ListCell<Employee>() {
 //            @Override
 //            protected void updateItem(Employee item, boolean empty) {
@@ -60,27 +78,6 @@ public class AdminPageController {
 //                }
 //            }
 //        });
-
-        listOfEmployees.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Employee>() {
-            @Override
-            public void changed(ObservableValue<? extends Employee> observableValue, Employee employee, Employee t1) {
-                ShowPageController spc = new ShowPageController();
-                Stage stage = new Stage();
-                Employee emp = listOfEmployees.getSelectionModel().getSelectedItem();
-                spc.setInitData(emp);
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("ShowPage-view.fxml"));
-                loader.setController(spc);
-                Scene scene = null;
-                try {
-                    scene = new Scene(loader.load());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                stage.setResizable(false);
-                stage.setTitle("EmployeeView");
-                stage.setScene(scene);
-                stage.show();
-            }
-        });
+        listOfEmployees.getSelectionModel().selectedItemProperty().addListener((observableValue, employee, t1) -> createEmployeeShow());
     }
 }
