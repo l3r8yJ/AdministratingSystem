@@ -42,7 +42,7 @@ public class AdminLoginController {
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("AdminPage-view.fxml"));
                 Scene scene;
                 try {
-                    scene = new Scene(loader.load(), 270, 800);
+                    scene = new Scene(loader.load());
                     stage.setScene(scene);
                 } catch (IOException e) {
                     e.printStackTrace();

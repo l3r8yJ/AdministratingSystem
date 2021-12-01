@@ -1,13 +1,15 @@
 package com.example.uifxmenu;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,8 +17,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import com.company.Employees.Employee;
 import com.company.Data.LocalEmployeesList;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 public class AdminPageController {
 
@@ -46,26 +48,39 @@ public class AdminPageController {
         String fileName = "employees.csv";
         LocalEmployeesList employeesDB = new LocalEmployeesList();
         employeesDB.ImportFromFile(fileName);
-        listOfEmployees.setItems(FXCollections.observableList(employeesDB.getEmployeeList()));
+        listOfEmployees.getItems().setAll(employeesDB.getEmployeeList());
 
-        listOfEmployees.setCellFactory(param -> new ListCell<Employee>() {
+//        listOfEmployees.setCellFactory(param -> new ListCell<Employee>() {
+//            @Override
+//            protected void updateItem(Employee item, boolean empty) {
+//                if (empty || item == null || item.getName() == null) {
+//                    setText(null);
+//                } else {
+//                    setText(item.getName());
+//                }
+//            }
+//        });
+
+        listOfEmployees.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Employee>() {
             @Override
-            protected void updateItem(Employee item, boolean empty) {
-                if (empty || item == null || item.getName() == null) {
-                    setText(null);
-                } else {
-                    setText(item.getName());
+            public void changed(ObservableValue<? extends Employee> observableValue, Employee employee, Employee t1) {
+                ShowPageController spc = new ShowPageController();
+                Stage stage = new Stage();
+                Employee emp = listOfEmployees.getSelectionModel().getSelectedItem();
+                spc.setInitData(emp);
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("ShowPage-view.fxml"));
+                loader.setController(spc);
+                Scene scene = null;
+                try {
+                    scene = new Scene(loader.load());
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                stage.setResizable(false);
+                stage.setTitle("EmployeeView");
+                stage.setScene(scene);
+                stage.show();
             }
         });
     }
-//    public void handleMouseClick(MouseEvent mouseEvent) {
-//        listOfEmployees.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent mouseEvent) {
-//                if(listOfEmployees.getSelectionModel().getSelectedItem() != null)
-//                System.out.println("clicked on " + listOfEmployees.getSelectionModel().getSelectedItem().getName());
-//            }
-//        });
-//    }
 }

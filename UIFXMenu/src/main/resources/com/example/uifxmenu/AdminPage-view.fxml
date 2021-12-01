@@ -6,14 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.AdminPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="460.0" style="-fx-background-color: #99CCFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.AdminPageController">
    <children>
-      <ListView fx:id="listOfEmployees" onMouseClicked="#handleMouseClick" layoutX="14.0" layoutY="41.0" prefHeight="593.0" prefWidth="240.0" />
-      <Button fx:id="addButton" layoutX="14.0" layoutY="650.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Add" />
-      <Button fx:id="deleteButton" layoutX="14.0" layoutY="700.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Delete" />
-      <Button fx:id="createReportButton" layoutX="14.0" layoutY="748.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="240.0" text="Create report" />
-      <Label fx:id="listLabel" layoutX="58.0" layoutY="14.0" text="List of employees">
+      <ListView fx:id="listOfEmployees" layoutX="14.0" layoutY="41.0" prefHeight="593.0" prefWidth="430.0" />
+      <Button fx:id="addButton" layoutX="123.0" layoutY="650.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #CCFF99;" text="Add" />
+      <Button fx:id="deleteButton" layoutX="123.0" layoutY="701.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #CCFF99;" text="Delete" />
+      <Button fx:id="createReportButton" layoutX="122.0" layoutY="748.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="215.0" style="-fx-background-color: #CCFF99;" text="Create report" />
+      <Label fx:id="listLabel" layoutX="153.0" layoutY="14.0" text="List of employees">
          <font>
             <Font name="Corbel Bold" size="20.0" />
          </font>

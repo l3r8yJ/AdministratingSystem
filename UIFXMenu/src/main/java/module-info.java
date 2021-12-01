@@ -10,6 +10,7 @@ module com.example.uifxmenu {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.company;
+    requires org.jetbrains.annotations;
 
     opens com.example.uifxmenu to javafx.fxml;
     exports com.example.uifxmenu;

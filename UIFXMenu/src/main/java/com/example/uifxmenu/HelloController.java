@@ -35,7 +35,7 @@ public class HelloController {
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("AdminLogin-view.fxml"));
             Scene scene;
             try {
-                scene = new Scene(loader.load(), 391, 129);
+                scene = new Scene(loader.load());
                 stage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();
