@@ -64,6 +64,7 @@ public class AdminPageController {
 
     @FXML
     void initialize(){
+        //importing db
         String fileName = "employees.csv";
         LocalEmployeesList employeesDB = new LocalEmployeesList();
         employeesDB.ImportFromFile(fileName);
