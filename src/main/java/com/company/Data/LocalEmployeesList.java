@@ -15,6 +15,13 @@ public class LocalEmployeesList {
 
     private final ArrayList<Employee> employeeList = new ArrayList<>();
 
+    public LocalEmployeesList() {
+    }
+
+    public LocalEmployeesList(String fileName) {
+        ImportFromFile(fileName);
+    }
+
     public void AddEmployee(Employee employee) {
         for (var e : employeeList) {
             if (e.getPhoneNumber().equals(employee.getPhoneNumber())) {

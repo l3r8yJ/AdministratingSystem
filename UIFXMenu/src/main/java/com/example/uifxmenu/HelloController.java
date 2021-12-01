@@ -3,6 +3,8 @@ package com.example.uifxmenu;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.company.Data.LocalEmployeesList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class HelloController {
+    String fileName = "employees.csv";
+    LocalEmployeesList employeesDB = new LocalEmployeesList(fileName);
 
     @FXML
     private ResourceBundle resources;
@@ -30,7 +34,7 @@ public class HelloController {
     void initialize() {
         adminButton.setOnAction(actionEvent -> {System.out.println("Admin button was pressed!");
             Stage stage = new Stage();
-            stage.setTitle("Admin sign in");
+            stage.setTitle("Admin login");
             stage.setResizable(false);
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("AdminLogin-view.fxml"));
             Scene scene;
@@ -42,7 +46,26 @@ public class HelloController {
             }
             stage.show();
         });
-        empButton.setOnAction(actionEvent -> System.out.println("Employee button was pressed!"));
+        empButton.setOnAction(actionEvent -> {
+            System.out.println("Employee button was pressed!");
+            Stage stage = new Stage();
+            stage.setTitle("Employee login");
+            stage.setResizable(false);
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("EmployeeLogin-view.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(loader.load());
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage.show();
+        });
+        exitButton.setOnAction(actionEvent -> {
+            if (employeesDB != null) employeesDB.ExportToFile(fileName);
+            Stage stage = (Stage) exitButton.getScene().getWindow();
+            stage.close();
+        });
     }
 
 }
