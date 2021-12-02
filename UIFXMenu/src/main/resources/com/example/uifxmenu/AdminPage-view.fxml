@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,22 +10,29 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.AdminPageController">
    <children>
       <ListView fx:id="listOfEmployees" layoutX="14.0" layoutY="41.0" prefHeight="593.0" prefWidth="430.0" />
-      <Button fx:id="addButton" layoutX="14.0" layoutY="643.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #0099CC;" text="Add" textFill="WHITE">
-         <font>
-            <Font name="SansSerif Bold" size="18.0" />
-         </font></Button>
-      <Button fx:id="deleteButton" layoutX="166.0" layoutY="643.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #0099CC;" text="Delete" textFill="WHITE">
-         <font>
-            <Font name="SansSerif Bold" size="18.0" />
-         </font></Button>
-      <Button fx:id="createReportButton" layoutX="317.0" layoutY="643.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #0099CC;" text="Create report" textFill="WHITE">
-         <font>
-            <Font name="SansSerif Bold" size="16.0" />
-         </font></Button>
-      <Label fx:id="listLabel" layoutX="143.0" layoutY="14.0" text="List of employees">
+      <Label fx:id="listLabel" layoutX="143.0" layoutY="8.0" text="List of employees">
          <font>
             <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
+      <ButtonBar layoutX="14.0" layoutY="654.0" prefHeight="26.0" prefWidth="430.0">
+        <buttons>
+            <Button fx:id="addButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #3366ff;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #3366ff;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="createReportButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #3366ff;" text="Create report" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="16.0" />
+               </font>
+            </Button>
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

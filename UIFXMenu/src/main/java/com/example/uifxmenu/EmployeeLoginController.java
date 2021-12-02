@@ -14,20 +14,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 public class EmployeeLoginController {
+
     private void createEmployeePage(Employee employee) {
+        EmployeePageController epc = new EmployeePageController();
         Stage stage = new Stage();
-        stage.setTitle("Your page");
-        stage.setResizable(false);
+        epc.setInitData(employee);
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("EmployeePage-view.fxml"));
-        Scene scene;
+        loader.setController(epc);
+        Scene scene = null;
         try {
             scene = new Scene(loader.load());
-            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.setResizable(false);
+        stage.setTitle(epc.settledEmployee.getName() + " View");
+        stage.setScene(scene);
         stage.show();
     }
 
@@ -53,8 +58,11 @@ public class EmployeeLoginController {
         Pattern p = Pattern.compile("(\\d+\\.?\\d*)?");
 
         loginButton.setOnAction(actionEvent -> {
-            Employee e = employeesDB.getEmployee(passwordInput.getText(), phoneInput.getText());
-            createEmployeePage(e);
+            var password = passwordInput.getText();
+            var phone = phoneInput.getText();
+            if (password.isEmpty() || phone.isEmpty()) {
+                System.out.println("employee not found!");
+            } else createEmployeePage(employeesDB.getEmployee(passwordInput.getText(), phoneInput.getText()));
         });
 
         phoneInput.textProperty().addListener((observable, oldValue, newValue) -> {

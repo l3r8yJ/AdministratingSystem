@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176.0" prefWidth="426.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uifxmenu.HelloController">
    <children>
-      <Button fx:id="adminButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="324.0" style="-fx-background-color: #0099CC;" text="Administrator" textFill="WHITE">
+      <Button fx:id="adminButton" layoutX="52.0" layoutY="128.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="324.0" style="-fx-background-color: #5588ff;" text="Administrator" textFill="WHITE">
          <font>
             <Font name="SansSerif Bold" size="18.0" />
          </font>
@@ -17,7 +17,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="324.0" text="Administration system">
+      <Label layoutX="41.0" layoutY="14.0" prefHeight="45.0" prefWidth="348.0" text="Staff monitoring system">
          <font>
             <Font name="SansSerif Bold" size="30.0" />
          </font>
@@ -25,15 +25,7 @@
             <Bloom />
          </effect>
       </Label>
-      <Button fx:id="exitButton" layoutX="348.0" layoutY="57.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="64.0" style="-fx-background-color: #0099CC;" text="Exit" textFill="WHITE">
-         <font>
-            <Font name="Corbel Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="empButton" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="324.0" style="-fx-background-color: #0099CC;" text="Employee" textFill="WHITE" textOverrun="CLIP">
+      <Button fx:id="empButton" layoutX="52.0" layoutY="183.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="324.0" style="-fx-background-color: #5588ff;" text="Employee" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="SansSerif Bold" size="18.0" />
          </font>
@@ -41,5 +33,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label layoutX="52.0" layoutY="76.0" text="Select your position">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

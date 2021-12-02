@@ -12,9 +12,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class HelloController {
-    String fileName = "employees.csv";
-    LocalEmployeesList employeesDB = new LocalEmployeesList(fileName);
-
     @FXML
     private ResourceBundle resources;
 
@@ -26,9 +23,6 @@ public class HelloController {
 
     @FXML
     private Button empButton;
-
-    @FXML
-    private Button exitButton;
 
     @FXML
     void initialize() {
@@ -60,11 +54,6 @@ public class HelloController {
                 e.printStackTrace();
             }
             stage.show();
-        });
-        exitButton.setOnAction(actionEvent -> {
-            if (employeesDB != null) employeesDB.ExportToFile(fileName);
-            Stage stage = (Stage) exitButton.getScene().getWindow();
-            stage.close();
         });
     }
 

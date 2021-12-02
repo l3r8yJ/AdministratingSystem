@@ -107,12 +107,14 @@ public class LocalEmployeesList {
     }
 
     public Employee getEmployee(String password, String phoneNumber) {
+        Employee employee = null;
         for (var e : employeeList) {
             if (e.getPassword().equals(password) && e.getPhoneNumber().equals(phoneNumber)) {
-                    return e;
-            } else break;
+                    employee = e;
+                    break;
+            }
         }
-        return null;
+        return employee;
     }
 
     public ArrayList<Employee> getEmployeeList() {
